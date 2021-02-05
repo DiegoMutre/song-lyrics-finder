@@ -1,8 +1,9 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 import { isEmpty } from "../helpers/helper";
 import Alert from "./Alert";
 
-const Form = () => {
+const Form = ({ setSearchTerms }) => {
     // State for search
     const [search, setSearch] = useState({
         artist: "",
@@ -81,6 +82,10 @@ const Form = () => {
             </div>
         </div>
     );
+};
+
+Form.propTypes = {
+    setSearchTerms: PropTypes.func.isRequired,
 };
 
 export default Form;
