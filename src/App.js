@@ -27,7 +27,7 @@ function App() {
                     axios(url2),
                 ]);
                 setLyrics(lyrics.data.lyrics);
-                setArtistInfo(info.data.artists[0]);
+                setArtistInfo(info.data.artists?.[0] || {});
             };
             getLyrics();
         }
