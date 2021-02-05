@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { isEmpty } from "../helpers/helper";
+import Alert from "./Alert";
 
 const Form = () => {
     // State for search
@@ -7,15 +9,34 @@ const Form = () => {
         song: "",
     });
 
+    // State for error
+    const [isError, setIsError] = useState(false);
+
     // When the user handle input
     const handleInputChange = e =>
         setSearch({ ...search, [e.target.name]: e.target.value });
 
+    // Validate form
+    const handleFormSubmit = e => {
+        e.preventDefault();
+
+        if (Object.values(search).some(input => isEmpty(input))) {
+            setIsError(true);
+            return;
+        }
+
+        setIsError(false);
+    };
+
     return (
         <div className="bg-info">
+            {isError && <Alert message="All Fields are Required" />}
             <div className="container">
                 <div className="row">
-                    <form className="col card text-white bg-transparent mb-5 pt-5 pb-2">
+                    <form
+                        className="col card text-white bg-transparent mb-5 pt-5 pb-2"
+                        onSubmit={handleFormSubmit}
+                    >
                         <fieldset>
                             <legend className="text-center">
                                 Song Lyrics Finder
