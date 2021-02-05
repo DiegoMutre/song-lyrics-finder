@@ -27,6 +27,7 @@ const Form = ({ setSearchTerms }) => {
         }
 
         setIsError(false);
+        setSearchTerms(search);
     };
 
     return (
