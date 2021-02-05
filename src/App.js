@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import ArtistInfo from "./components/ArtistInfo";
 import Form from "./components/Form";
+import LyricsSong from "./components/LyricsSong";
 
 function App() {
     // State for search terms
@@ -41,6 +42,9 @@ function App() {
                         {Object.keys(artistInfo).length ? (
                             <ArtistInfo artistInfo={artistInfo} />
                         ) : null}
+                    </div>
+                    <div className="col-md-6">
+                        {lyrics.length ? <LyricsSong lyrics={lyrics} /> : null}
                     </div>
                 </div>
             </div>
