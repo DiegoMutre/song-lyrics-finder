@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import ArtistInfo from "./components/ArtistInfo";
 import Form from "./components/Form";
 
 function App() {
@@ -34,6 +35,15 @@ function App() {
     return (
         <>
             <Form setSearchTerms={setSearchTerms} />
+            <div className="container mt-5">
+                <div className="row">
+                    <div className="col-md-6">
+                        {Object.keys(artistInfo).length ? (
+                            <ArtistInfo artistInfo={artistInfo} />
+                        ) : null}
+                    </div>
+                </div>
+            </div>
         </>
     );
 }
