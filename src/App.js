@@ -6,6 +6,12 @@ function App() {
     // State for search terms
     const [searchTerms, setSearchTerms] = useState({});
 
+    // State for lyrics
+    const [lyrics, setLyrics] = useState("");
+
+    // State for artist info
+    const [artistInfo, setArtistInfo] = useState({});
+
     // Fetch the api
     useEffect(() => {
         if (Object.keys(searchTerms).length > 1) {
@@ -18,7 +24,8 @@ function App() {
                     axios(url),
                     axios(url2),
                 ]);
-                console.log(lyrics, info);
+                setLyrics(lyrics.data.lyrics);
+                setArtistInfo(info.data.artists[0]);
             };
             getLyrics();
         }
